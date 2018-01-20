@@ -1,3 +1,5 @@
+
+<!-- PAPA DOH! -->
 <?php
     session_start();
     include "DB_Connection.php";
