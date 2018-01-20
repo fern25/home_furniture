@@ -32,15 +32,15 @@
                     <div class="col-sm-5">
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <label for="name">Name:</label><br>
-                            <input  id="name" type="text" name="name"><br><br>
+                            <input  id="name" required="" type="text" name="name"><br><br>
                             <label for="email">Email:</label><br>
-                            <input name="email" id="email" type="email"><br><br>
+                            <input name="email" required="" id="email" type="email"><br><br>
                             <label for="username">Username:</label><br>
-                            <input name="user" id="username" type="text" ><br><br>
+                            <input name="user" required="" id="username" type="text" ><br><br>
                             <label for="pass">Password:</label><br>
-                            <input name="pass" id="pass" type="password" ><br><br>
+                            <input name="pass" required="" id="pass" type="password" ><br><br>
                             <label for="pass">Retype Password:</label><br>
-                            <input name="rpass" id="pass" type="password" ><br><br>
+                            <input name="rpass" required="" id="pass" type="password" ><br><br>
                             <button name="sbutton" class="btn btn-success">Login</button>
                             <button class="btn btn-danger">Cancel</button>
                         </form>
