@@ -65,7 +65,7 @@ if(!isset($_SESSION['user'])){
                </div>
            </div>
            <div class="panel-footer">
-            <center>2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
+            <center>© 2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
         </div>
     </div>
 </div>
