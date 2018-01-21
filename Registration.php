@@ -29,7 +29,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-3"></div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                             <label for="name">Name:</label><br>
                             <input  id="name" required="" type="text" name="name"><br><br>
@@ -41,7 +41,7 @@
                             <input name="pass" required="" id="pass" type="password" ><br><br>
                             <label for="pass">Retype Password:</label><br>
                             <input name="rpass" required="" id="pass" type="password" ><br><br>
-                            <button name="sbutton" class="btn btn-success">Login</button>
+                            <button name="sbutton" class="btn btn-success">Register</button>
                             <button class="btn btn-danger">Cancel</button>
                         </form>
                     </div>

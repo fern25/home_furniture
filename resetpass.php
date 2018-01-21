@@ -41,7 +41,7 @@ session_start();
                         <input id="pass" type="password" name=""><br><br>
                         <label for="pass">Retype New Password:</label><br><br>
                         <input id="pass" type="password" name=""><br><br>
-                        <button class="btn btn-success">Login</button>
+                        <button class="btn btn-success">OK</button>
                         <button class="btn btn-danger">Cancel</button>
                     </div>
                 </div>
