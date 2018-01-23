@@ -25,13 +25,16 @@ if(!isset($_SESSION['user'])){
             </div>
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="">Add</a>
+                    <a href="">Add Item</a>
                 </li>
                 <li>
-                    <a href="">Update</a>
+                    <a href="">Update Item</a>
                 </li>
                 <li>
                     <a href="">View Order Item</a>
+                </li>
+                <li>
+                    <a href="LoginAdmin.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -86,20 +89,5 @@ if(!isset($_SESSION['user'])){
     }
 }
 </script>
-    <!-- <div class="panel">
-        <h1>Welcom to Admin Panel</h1>
-        <h2>Home Furniture</h2>
-    </div>
-    <div class="content">
-        <div class="function">
-            <li><a href="Add.php">ADD</a></li>
-            <li><a href="Delete.php">DELETE</a></li>
-            <li><a href="Update.php">UPDATE</a></li>
-            <li><a href="Search.php">SEARCH</a></li>
-            <li><a href="Update.php">VIEW ORDER ITEMS</a></li>
-            <li><a href="Update.php">LOG OFF</a></li>
-        </div>
-    </div> -->
-
 </body>
 </html>

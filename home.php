@@ -16,10 +16,10 @@
 				<a href="" class="navbar-brand">Home Furniture</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li>
+				<li class="active">
 					<a href="">Items</a>
 				</li>
-				<li class="active">
+				<li >
 					<a href="">Services</a>
 				</li>
 				<li>
