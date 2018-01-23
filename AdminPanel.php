@@ -35,6 +35,7 @@ if(!isset($_SESSION['user'])){
                 </li>
                 <li>
                     <a href="LoginAdmin.php">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -47,8 +48,9 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-12">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">  
+
                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                        <h4>Add Products from the database</h4>
+                        <h4>Add Products to the database</h4>
                         <label>Product Name:</label><br><br>
                         <input style="width: 90%;" type="text" name="pname" required=""><br><br>
                         <label>Produdct Price:(PHP)</label><br><br>
@@ -70,6 +72,21 @@ if(!isset($_SESSION['user'])){
      </div>
      <div class="panel-footer">
         <center>2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
+                        <button name="Addbtn" class="btn btn-success">Add Item</button>
+                        <a href="home.php" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                           <input name="image" type='file' onchange="readURL(this);" />
+                           <img id="blah" src="#" alt="-------------------------------------" />
+                           <br>
+                       </form>
+                   </div>
+               </div>
+           </div>
+           <div class="panel-footer">
+            <center>© 2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
+        </div>
     </div>
 </div>
 </div>
