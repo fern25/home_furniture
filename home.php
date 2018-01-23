@@ -31,90 +31,32 @@
 			</ul>
 		</div>
 		<br><br><br><br><br>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4>This is a heading!</h4>
-			</div>
-			<div class="panel-body" style="background: #225;">
-				<div class="col-sm-12">
-					<div class="col-sm-3">
-						<a href="" class="btn btn-success">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
+		<div class="col-sm-12">
+			<?php 
+
+			include "Connection.php";
+
+			$sql = "SELECT * from products";
+
+			$result=$con->query($sql);
+			if($result->num_rows>0){
+				while ($row= $result->fetch_assoc()) {
+					echo "
+					<div class='col-sm-3'>
+					<a href='' class='btn btn-default'>
+					<img src='img/$row[img]' width='100' height='100'>
+					<br><br>
+					<label>$row[pname]</label>
+					<p style='color: orange'>₱$row[price]</p>
+					</a>
 					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-primary">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-danger">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-warning">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-12"><br></div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-default">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-default">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-default">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-3">
-						<a href="" class="btn btn-default">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-					<div class="col-sm-2">
-						<a href="" class="btn btn-default">
-							<img src="1.jpg" width="100" height="100">
-							<br><br>
-							<label>Silver white Antique Watch</label>
-							<p style="color: orange">₱12,299.75</p>
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="panel-footer">
-				<h4>This is a footer!</h4>
-			</div>
+
+					";
+				}
+			}
+
+			?>
+
 		</div>
 	</div>
 </body>

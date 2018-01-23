@@ -35,39 +35,43 @@ if(!isset($_SESSION['user'])){
                 </li>
             </ul>
         </div>
-        <div class="panel panel-warning">
+        <div class="alert alert-warning" id="msg"><?php if(isset($_GET['msg'])){
+          echo $_GET['msg']; 
+        } ?></div>
+        <div class="panel panel-default">
             <div class="panel-body" >
                 <!-- some content -->
                 <div class="col-sm-12">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">  
+                       <form action="upload.php" method="post" enctype="multipart/form-data">
                         <h4>Add Products from the database</h4>
                         <label>Product Name:</label><br><br>
                         <input style="width: 90%;" type="text" name="pname" required=""><br><br>
                         <label>Produdct Price:(PHP)</label><br><br>
                         <input style="width: 90%;" type="number" required="" min="1" value="1" name="price"><br><br>
                         <label>Product Description</label><br><br>
-                        <textarea style="width: 90%; height: 90%;"></textarea>
+                        <textarea name="desc" style="width: 90%; height: 90%;"></textarea>
                         <br><br>
-                        <button class="btn btn-success">Add Item</button>
-                        <button class="btn btn-danger">Cancel</button>
+                        <button name="additem" class="btn btn-success">Add Item</button>
+                        <a href="home.php" class="btn btn-danger">Cancel</a>
                     </div>
                     <div class="col-sm-4">
-                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                           <input type='file' onchange="readURL(this);" />
-                           <img id="blah" src="#" alt="-------------------------------------" />
-                           <br>
-                       </form>
-                   </div>
-               </div>
-           </div>
-           <div class="panel-footer">
-            <center>2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
-        </div>
+
+                     <input type='file' name="image" onchange="readURL(this);" />
+                     <img id="blah" src="#" alt="-------------------------------------" />
+                     <br>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <div class="panel-footer">
+        <center>2017 Home Furniture Website All Rights Reserved | Design by King doh</center>
     </div>
 </div>
+</div>
 <script type="text/javascript">
- function readURL(input) {
+   function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
