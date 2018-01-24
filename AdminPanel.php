@@ -21,7 +21,7 @@ if(!isset($_SESSION['user'])){
         <div class="col-sm-12"></div>
         <div class="navbar navbar-inverse">
             <div class="navbar-header">
-                <a href="" class="navbar-brand">Admin Panel</a>
+                <a href="" class="navbar-brand">Adminq Panel</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active">
