@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Items</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
 	<style type="text/css">
 	img{
@@ -43,12 +43,12 @@
 				while ($row= $result->fetch_assoc()) {
 					echo "
 					<div class='col-sm-3'>
-					<a href='' class='btn btn-default'>
+					<a href='product_view.php?id=$row[id]' class='btn btn-default'>
 					<img src='img/$row[img]' width='100' height='100'>
 					<br><br>
 					<label>$row[pname]</label>
 					<p style='color: orange'>₱$row[price]</p>
-					</a>
+					</a>	
 					</div>
 
 					";
