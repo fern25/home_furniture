@@ -78,8 +78,8 @@
 				<label>$row[pname]</label>
 				<h4 style='color: orange' id='price' class='my_price'>₱".
 				
-				number_format($row['price'])
-				.".00</h4>
+				number_format($row['price'],2)
+				."</h4>
 				<button class='btn btn-success'>View</button>
 				</div>
 				</div>

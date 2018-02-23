@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<?php
-	setlocale(LC_ALL, ''); // Locale will be different on each system.
-	$amount = 1000000000.97;
-	$locale = localeconv();
+<?php  
 
-	echo $locale['currency_symbol'], number_format($amount, 2, $locale['decimal_point'], $locale['thousands_sep']);
-	?>
-</body>
-</html>
+$mynumber = 1000000000000000000;
+
+$newformat = number_format($mynumber,2);
+
+
+
+echo $newformat;
+
+?>
