@@ -9,14 +9,14 @@ if(isset($_POST['additem'])){
 	$pname = $_POST['pname'];
 	$price = $_POST['price'];
 	$filetype = strtolower(pathinfo($path,PATHINFO_EXTENSION));
-/*
+
 	if($filetype != "jpg" && $filetype != "png" && $filetype != "jpeg"){
 		header("location:AdminPanel.php?msg=File must be in JPG and PNG JPEG format!");
 	}
 	else if(file_exists($path)){
 		header("location:AdminPanel.php?msg=File already exist choose another file to upload!");
 	}
-	else{*/
+	else{
 		$sql = "INSERT INTO products values(null,'$pname','$price','$desc','$image')";
 
 		if($con->query($sql)){
@@ -30,7 +30,7 @@ if(isset($_POST['additem'])){
 		else{
 			echo "product insert failed!";
 		}
-	//}
+	}
 
 }
 

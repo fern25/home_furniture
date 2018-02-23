@@ -2,105 +2,14 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 </head>
 <body>
-	<div class="container">
-		<br>
-		<div style="width: 200px;height: 400px;" class="panel panel-default">
-			<div style="overflow: auto;width: 200px;height: 400px;" class="panel-heading">	
+	<?php
+	setlocale(LC_ALL, ''); // Locale will be different on each system.
+	$amount = 1000000000.97;
+	$locale = localeconv();
 
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				<div class="panel panel-info">
-					This is a name:
-					<div class="panel-heading">
-						This is a comment
-					</div>
-				</div>
-				
-			</div>
-		</div>
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
-			<input type="password" name="password">
-			<button name="btn_convert">CONVERT TO MD5</button>
-
-
-
-		</form>
-	</div>
-	<?php  
-
-	if(isset($_POST['btn_convert'])){
-
-
-		$databasepassword = "jamestubiano";
-
-		$md5dbpass = md5($databasepassword);
-
-
-		$pass = $_POST['password'];
-		$newpass = md5($pass);
-
-
-		echo $md5dbpass.'<br>';
-		echo $newpass;
-
-	}
-
+	echo $locale['currency_symbol'], number_format($amount, 2, $locale['decimal_point'], $locale['thousands_sep']);
 	?>
 </body>
 </html>
