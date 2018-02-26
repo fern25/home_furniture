@@ -1,3 +1,8 @@
+<?php
+
+	session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +22,10 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active">
-					<a href="">Items</a>
+					<a href="index.php">Items</a>
 				</li>
 				<li >
-					<a href="">Services</a>
+					<a href="services.php">Services</a>
 				</li>
 				<li>
 					<a href="">Contact us</a>

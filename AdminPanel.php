@@ -31,7 +31,7 @@ if(!isset($_SESSION['user'])){
                     <a href="UpdatePanel.php">Update Item</a>
                 </li>
                 <li>
-                    <a href="">View Order Item</a>
+                    <a href="ViewItemOrder.php">View Order Item</a>
                 </li>
                 <li>
                     <a href="logout.php">Logout</a>
@@ -55,7 +55,7 @@ if(!isset($_SESSION['user'])){
                         <label>Produdct Price:(PHP)</label><br><br>
                         <input style="width: 90%;" type="number" required="" min="1" value="1" name="price"><br><br>
                         <label>Product Description</label><br><br>
-                        <textarea name="desc" style="width: 90%; height: 90%;"></textarea>
+                        <textarea name="desc" style="width: 90%; height: 90%;" required=""></textarea>
                         <br><br>
                         <button name="additem" class="btn btn-success">Add Item</button>
                         <a href="index.php" class="btn btn-danger">Cancel</a>

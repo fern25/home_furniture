@@ -1,4 +1,15 @@
+<?php  
 
+session_start();
+
+if(!isset($_SESSION['cuser'])){
+	header("location:index.php?msg=youcannotovveridefromaccount!");
+}
+else{
+	//nothing to do with this code
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +29,10 @@
 	a:hover{
 		text-decoration: none;
 	}
+	ul#nav{
 
+		left: 10%;
+	}
 	body{
 		background: url('bg/bg2.jpg');
 		background-size: cover;
@@ -36,7 +50,7 @@
 				</div>
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="index.php">Items</a>
+						<a href="account.php">Items</a>
 					</li>
 					<li >
 						<a href="services.php">Services</a>
@@ -48,12 +62,33 @@
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-
 					<li>
-						<a href="custRegister.php">Sign Up</a>
+						<a href="cart.php">
+							<span class="glyphicon glyphicon-shopping-cart">
+							</span> Shopping Cart 
+							<span class="badge badge-light">
+								<?php  
+
+								include "Connection.php";
+
+								$sql = "SELECT sum(qty) as sumqty from clientitem where cid=$_SESSION[cid]";
+
+								$result=$con->query($sql);
+								if($result->num_rows > 0){
+									while ($row =$result->fetch_assoc()) {
+										echo $row['sumqty'];
+									}
+								}
+
+								?>
+							</span>
+						</a>
 					</li>
 					<li>
-						<a href="custLogin.php">Login</a>
+						<a href=""><?php echo $_SESSION['cuser']; ?></a>
+					</li>
+					<li>
+						<a href="logoutclient.php">Logout</a>
 					</li>
 				</ul> 	 
 			</div>
@@ -72,7 +107,7 @@
 				echo "
 
 				<div class='col-sm-3'>
-				<a href='custLogin.php'>
+				<a href='product_view.php?id=$row[id]'>
 				<div class='panel panel-default'>
 				<div class='panel-heading'>
 				<img class='img-responsive' style='height:190px; width: 190px;' src='img/$row[img]'>

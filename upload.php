@@ -1,4 +1,4 @@
-<?php  
+	<?php  
 
 include "Connection.php";
 
@@ -17,7 +17,15 @@ if(isset($_POST['additem'])){
 		header("location:AdminPanel.php?msg=File already exist choose another file to upload!");
 	}
 	else{
-		$sql = "INSERT INTO products values(null,'$pname','$price','$desc','$image')";
+
+		$sql1  = "SELECT * from products where pname ='$pname'";
+		$result = $con->query($sql1);
+		if($result->num_rows > 0){
+			$sql = "UPDATE products set price = '$price', description='$desc', img='$image' where pname='$pname'";
+		}
+		else{
+			$sql = "INSERT INTO products values(null,'$pname','$price','$desc','$image')";
+		}
 
 		if($con->query($sql)){
 			if(move_uploaded_file($_FILES['image']['tmp_name'], $path)){

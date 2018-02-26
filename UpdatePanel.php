@@ -31,7 +31,7 @@ if(!isset($_SESSION['user'])){
                     <a href="UpdatePanel.php">Update Item</a>
                 </li>
                 <li>
-                    <a href="">View Order Item</a>
+                    <a href="ViewItemOrder.php">View Order Item</a>
                 </li>
                 <li>
                     <a href="logout.php">Logout</a>
@@ -68,12 +68,12 @@ if(!isset($_SESSION['user'])){
                 <label>Product Name:</label><br><br>
                 <input style="width: 90%;" type="text" id="pname" name="pname" required=""><br><br>
                 <label>Produdct Price:(PHP)</label><br><br>
-                <input style="width: 90%;" type="number" required="" id="price" min="0" value="0" name="price"><br><br>
+                <input style="width: 90%;" type="number" required="" id="price" min="1" value="1" name="price"><br><br>
                 <label>Product Description</label><br><br>
                 <textarea name="desc" id="desc" style="width: 90%; height: 90%;"></textarea>
                 <br><br>
                 <button name="btn_update" class="btn btn-success">Update Item</button>
-                <a href="index1.php" class="btn btn-danger">Cancel</a>
+                <a href="index.php" class="btn btn-danger">Cancel</a>
             </form>
         </div>
         <div class="col-sm-4">

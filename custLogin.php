@@ -4,22 +4,22 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Administrator</title>
+    <title>Customer Login</title>
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 
         
 </head>
-<body style="background: url('bg.png');background-repeat: no-repeat;background-size: cover;">
+<body style="background: url('bg/bg2.jpg');background-repeat: no-repeat;background-size: cover;">
     <div class="container">
         <br>
         <div class="col-sm-3"></div>
         <div class="col-sm-5">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>Login Admin Panel</h4>
-                    <a href="LoginAdmin.php" class="btn btn-success">Login Panel</a>
-                    <a href="Registration.php" class="btn btn-warning">Register Panel</a>
-                    <a href="resetpass.php" class="btn btn-warning">Reset Password Panel</a>
+                    <h4>Login</h4>
+                    <a href="custLogin.php" class="btn btn-success">Login</a>
+                    <a href="custRegister.php" class="btn btn-warning">Register</a>
+                    <a href="custResetPass.php" class="btn btn-warning">Reset Password</a>
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-3"></div>
@@ -29,7 +29,7 @@ session_start();
                             <input id="username" type="text" name="user"><br><br>
                             <label for="pass">Password:</label><br>
                             <input id="pass" type="password" name="pass"><br><br>
-                            <button name="login" class="btn btn-success">Login</button>
+                            <button name="clogin" class="btn btn-success">Login</button>
                             <a href="index.php" class="btn btn-danger">Cancel</a>
                         </form>
                     </div>
@@ -44,7 +44,7 @@ session_start();
 
     include "Connection.php";
 
-    if(isset($_POST['login'])){
+    if(isset($_POST['clogin'])){
 
         $username = $_POST['user'];
         $password = $_POST['pass'];
@@ -52,16 +52,17 @@ session_start();
         $user = mysqli_real_escape_string($con,$username);
         $pass = mysqli_real_escape_string($con,md5($password));
 
-        $sql = "SELECT * FROM adminaccounts where Ausername ='$user' and Apassword='$pass'";
+        $sql = "SELECT * FROM clientaccounts where custusername ='$user' and custpassword='$pass'";
 
         $result=$con->query($sql);
         if($result->num_rows>0){
             while ($row=$result->fetch_assoc()) {
 
-                $_SESSION['user'] =$row['Ausername'];
-                $_SESSION['pass'] =$row['Apassword'];
+                $_SESSION['cid'] = $row['custID'];
+                $_SESSION['cuser'] =$row['custusername'];
+                $_SESSION['cpass'] =$row['custpassword'];
 
-                header("location:AdminPanel.php?welcome=useradmin");
+                header("location:account.php?welcome=client");
             }
         }
         else{
