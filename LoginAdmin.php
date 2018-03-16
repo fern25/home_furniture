@@ -1,79 +1,85 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Administrator</title>
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-
-        
+    <script src="https://ajax.aspnetcdn.com/ajax/jqueryy/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <style type="text/css">
+    body{
+        background-color: #555;
+            /*background: url('bg.png');
+            background-repeat: no-repeat;
+            background-size: cover;*/
+            font-family: 'courier new';
+        }
+    </style>
 </head>
-<body style="background: url('bg.png');background-repeat: no-repeat;background-size: cover;">
+<body>
     <div class="container">
         <br>
         <div class="col-sm-3"></div>
         <div class="col-sm-5">
             <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4>Login Admin Panel</h4>
-                    <a href="LoginAdmin.php" class="btn btn-success">Login Panel</a>
-                    <a href="Registration.php" class="btn btn-warning">Register Panel</a>
-                    <a href="resetpass.php" class="btn btn-warning">Reset Password Panel</a>
+                <div class="navbar navbar-inverse">
+                    <center>
+                        <h4 style="color: white">Login Admin Panel</h4>
+                    </center>
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-3"></div>
-                    <div class="col-sm-5">
-                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                            <label for="username">Username:</label><br>
-                            <input id="username" type="text" name="user"><br><br>
-                            <label for="pass">Password:</label><br>
-                            <input id="pass" type="password" name="pass"><br><br>
-                            <button name="login" class="btn btn-success">Login</button>
-                            <a href="index.php" class="btn btn-danger">Cancel</a>
-                        </form>
+                    <div class="col-sm-6">
+                        <label for="username">Username:</label><br>
+                        <input id="username" type="text" name="user"><br><br>
+                        <label for="pass">Password:</label><br>
+                        <input id="pass" type="password" name="pass"><br><br>
+                        <button name="login" id="btn_login" class="btn btn-primary">Login</button>
+                        <a href="index.php" class="btn btn-primary">Cancel</a>
+                        
                     </div>
                 </div>
                 <div class="panel-footer">
-                    © 2017 Home Furniture Website All Rights Reserved | Design by King doh
+                    <center>
+                        © 2017 Home Furniture Website All Rights Reserved | Design by King doh
+                    </center>
                 </div>
             </div>
         </div>
     </div>
-    <?php  
+    <script>
+        $(document).ready(function(){
 
-    include "Connection.php";
+            $("#username").focus();
+            $("#username").keydown(function(e){
+                if(e.keyCode == 13){
+                    $("#btn_login").trigger("click");
+                }
+            });
+            $("#pass").keydown(function(e){
+                if(e.keyCode == 13){
+                    $("#btn_login").trigger("click");
+                }
+            });
 
-    if(isset($_POST['login'])){
+            $("#btn_login").click(function(){
 
-        $username = $_POST['user'];
-        $password = $_POST['pass'];
+                $.ajax({
+                 type: "POST",
+                 url: "testfile.php",
+                 cache: false,
+                 data: {
+                    "request":1
+                 },
+                 success: function(data){
+                    
+                    window.location.href='index.php';
+                 }
+             });
+            });
 
-        $user = mysqli_real_escape_string($con,$username);
-        $pass = mysqli_real_escape_string($con,md5($password));
-
-        $sql = "SELECT * FROM adminaccounts where Ausername ='$user' and Apassword='$pass'";
-
-        $result=$con->query($sql);
-        if($result->num_rows>0){
-            while ($row=$result->fetch_assoc()) {
-
-                $_SESSION['user'] =$row['Ausername'];
-                $_SESSION['pass'] =$row['Apassword'];
-
-                header("location:AdminPanel.php?welcome=useradmin");
-            }
-        }
-        else{
-            echo "<script>alert('Username or password failed!')</script>";
-        }
-
-    }
-
-
-
-
-    ?>
+        });
+    </script>
     
 </body>
 </html>

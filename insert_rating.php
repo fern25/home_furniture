@@ -8,10 +8,10 @@ if(isset($_POST['request'])){
 	$custid = $_POST['custID'];
 	$rate = $_POST['Rate'];
 
-	$sql = "INSERT INTO ratings values(null, $id, $custid, $rate)";
+	$sql = "INSERT INTO ratings values(null,$custid,$id, $rate)";
 
 	if($con->query($sql)){
-		echo "Rating inserted ";
+		echo "Rating inserted";
 	}
 	else
 	{

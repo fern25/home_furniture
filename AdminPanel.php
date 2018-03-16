@@ -2,8 +2,11 @@
 
 session_start();
 
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['auser'])){
     header("location:LoginAdmin.php?msg=blocklogin!");
+}
+else{
+    
 }
 
 ?>

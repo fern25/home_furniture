@@ -1,7 +1,9 @@
 <?php
+
 session_start();
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,18 +109,9 @@ session_start();
 
             $("#btn_login").click(function(){
 
-                //adding loading function
-                /*$("#loader").removeClass("hidden");
-                setTimeout(function(){
-
-                $("#loader").addClass("hidden");
-
-            },1000);*/
-
-                //ajax login
                 $.ajax({
                     type: "post",
-                    url: "php_login.php",
+                    url: "php_login_admin.php",
                     cache: false,
                     data: {
                         "request": 1,
@@ -127,7 +120,7 @@ session_start();
                     },
                     success: function(data){
                         if(data == "success"){
-                            window.location.href='account.php';
+                            window.location.href='index.php';
                         }
                         else{
                             $("#pass").val("");

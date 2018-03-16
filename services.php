@@ -36,7 +36,7 @@ else{
 		font-family: "courier new";
 	}
         .para{background-image: url(pictures/qZrszA.jpg);
-        
+        border-radius: 5px;
         padding: 30px 10px 30px 10px}
         #head, #move{color: white; font-size: large; font-size: bold;}
 </style>

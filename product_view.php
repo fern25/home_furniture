@@ -22,7 +22,13 @@ session_start();
 	}
 	div#comment_sec{
 		overflow: auto;
-
+		overflow-y: scroll;
+		text-align:left;
+		width: 100%;
+		height: 500px;
+	}
+	label{
+		font-size: 150%;
 	}
 
 </style>
@@ -117,195 +123,64 @@ session_start();
 				</form>
 				</div>
 				<div class='col-sm-12'>
-				<hr>
-
-				
-				$sql = "SELECT * FROM ratings where custID=$_SESSION[idno] and custID=$_GET[code]";
-
-				$result= $con->query($sql);
-				if($result->num_rows > 0){
-					while($row = $result->fetch_assoc()){
-						echo "<hr>You rated this item: <span id='rate_text'>$row[Rate] stars</span></hr>";
-					}
-				}
-
-				else{
-					echo'
-					<div id="rate content">
-					<h4>Rate this Items</h4>
-					<p>
-					<img id='s1' src='pictures/gstar.png' style='cursor: pointer' width='50'>
-					<img id='s2' src='pictures/gstar.png'  style='cursor: pointer'  width='50'>
-					<img id='s3' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
-					<img id='s4' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
-					<img id='s5' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
-					</p>
-					</div>
-					';
-					echo '
-					<div class='hidden' id='done_rate'>
-					<h4>Thank you for rating. Refresh to see your rate.</h4>
-					</div>
-					';
-				}
-
-				
-				<hr>
-				</div>
-				<div class='col-sm-12'>
-				<div class='panel panel-default' style='text-align:center; align-content: center;'>
-				<div class='panel-heading'>
-				<h4>Product Comments</h4>
-				<hr>
-				<div class='col-sm-2'></div>
-				<div style='overflow-y: scroll;text-align:left; width: 100%;height: 500px;'>
-
-				<label>Commenter Name</label>
-				<br>
-				<p>Comment Section Comment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section</p>
-				<br>
-				<hr>
-
-				<label style='font-size: 150%;'>Commenter Name</label>
-				<br>
-				Comment Section Comment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section
-				<br>
-				<hr>
-
-				<label style='font-size: 150%;'>Commenter Name</label>
-				<br>
-				Comment Section Comment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section
-				<br>
-				<hr>
-
-				<label style='font-size: 150%;'>Commenter Name</label>
-				<br>
-				Comment Section Comment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section
-				<br>
-				<hr>
-
-				<label style='font-size: 150%;'>Commenter Name</label>
-				<br>
-				Comment Section Comment SectionComment SectionComment SectiontionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section
-				<br>
-				<hr>
-
-				<label style='font-size: 150%;'>Commenter Name</label>
-				<br>
-				Comment Section Comment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment SectionComment Section
-				<br>
-				<hr>
-
-				</div>
-				</div>
-				</div>
-				<textarea placeholder='Place your comment here to this product' style='text-align: left; width: 600px; height: 150px;'></textarea>
-				<br><br>
-				<button class='btn btn-success'>Submit Comment</button>
-				</div>
-
-
-				</div>
-				<div class='col-sm-12'><br></div>
-				</div>
-
-				</div>
-
-				";
+				<hr>";
 			}
+		}
+		else{
+
 		}
 	}
 
 	?>
+	<div id='rate content'>
+		<h4>Rate this Items</h4>
+		<h3 id="rated" class="hidden">
+			You rate this item: <span class="text text-success" id="rateno"></span>
+		</h3>
+		<h4 id="done_rate" class="hidden">Thank you for rating this item your rating will be submitted immediately</h4>
+		<p id="not_rated">
+			<img id='s1' src='pictures/gstar.png' style='cursor: pointer' width='50'>
+			<img id='s2' src='pictures/gstar.png'  style='cursor: pointer'  width='50'>
+			<img id='s3' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
+			<img id='s4' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
+			<img id='s5' src='pictures/gstar.png'  style='cursor: pointer' width='50'>
+		</p>
+	</div>
+
+
+	<hr>
+</div>
+<div class='col-sm-12'>
+	<div class='navbar navbar-inverse' style='text-align:center; align-content: center;'>
+		<div class='panel-heading' style="color: white">
+			<h4>Product Comments/ Asked about the Products</h4>
+			<hr>
+			<div class='col-sm-2'></div>
+			<div id="comment_sec">
+				<!-- all comments should pbe populated here -->
+			</div>
+		</div>
+	</div>
+	<h3 style="color: green;" class="hidden" id="com_notif">Comment successfully added!</h3>
+	<textarea placeholder='Place your comment here to this product' id="txt_comment" style='text-align: left; width: 600px; height: 150px;'></textarea>
+	<br><br>
+	<button class='btn btn-success' id="btn_submit">Submit Comment</button>
+</div>
 
 
 </div>
-<p class="hidden" id="cust_id"><?php if(isset($_GET['code'])){echo $_GET['code'];} ?></p>
-<p class="hidden" id="my_id"><?php echo $_SESSION['idno'];?></p>
+<div class='col-sm-12'><br></div>
+</div>
+
+</div>
+
+</div>
+<h1 class="" id="cust_id"><?php if(isset($_GET['id'])){echo $_GET['id'];} ?></h1>
+<h1 class="hidden" id="my_id"><?php echo $_SESSION['cid'];?></h1>
 
 <script type="text/javascript" src="js/rating.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-
-		$Rate = 0;
-		$idno = $("#my_id").text();
-		$newidno = parseInt($idno);
-		$custID = $("$cust_id").text();
-		$newcustid = parseInt($custID);
-		$ratetxt = $("#rate_text").text();
-
-		if(parseInt($ratetxt) <= 3){
-			$("#rate_text").css("color","red");
-		}
-		else{
-			(parseInt($ratetxt) > 3){
-			$("#rate_text").css("color","green");
-		}
-
-		$("#s1").click(function(){
-			console.log($newidno);
-
-			$Rate = 1;
-
-			my_ajax;
-
-			$("#rate_content").addClass('hidden');
-			$("#done_rate").addClass('hidden');
-
-		});
-		$("#s2").click(function(){
-			$Rate = 2;
-
-			my_ajax;
-
-			$("#rate_content").addClass('hidden');
-			$("#done_rate").addClass('hidden');
-		});
-		$("#s3").click(function(){
-			$Rate = 3;
-
-			my_ajax;
-
-			$("#rate_content").addClass('hidden');
-			$("#done_rate").addClass('hidden');
-		});
-		$("#s4").click(function(){
-			$Rate = 4;
-
-			my_ajax;
-
-			$("#rate_content").addClass('hidden');
-			$("#done_rate").addClass('hidden');
-		});
-		$("#s5").click(function(){
-			$Rate = 5;
-
-			my_ajax;
-
-			$("#rate_content").addClass('hidden');
-			$("#done_rate").addClass('hidden');
-		});
-
-
-		function my_ajax(){
-
-			$.ajax({
-				url: "insert_rating.php",
-				type: "POST",
-				async: false,
-				data: {
-					"request":1,
-					"id": $newidno,
-					"rate": $Rate,
-					"custid": $newcustid,
-					
-				},
-				success: function(data){
-					console.log(data);
-				}
-			});
-		}
-	});
-</script>
+<script type="text/javascript" src="js/rating-actions.js"></script>
+<script type="text/javascript" src="js/live_comment.js"></script>
+<script type="text/javascript" src="js/commenter.js"></script>
 </body>
 </html>
