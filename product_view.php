@@ -78,6 +78,9 @@ session_start();
 						<a href=""><?php echo $_SESSION['cuser']; ?></a>
 					</li>
 					<li>
+						<a href="tracking.php">Tracking Numbers</a>
+					</li>
+					<li>
 						<a href="logoutclient.php">Logout</a>
 					</li>
 				</ul>

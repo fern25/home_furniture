@@ -8,8 +8,10 @@ session_start();
 <head>
 	<title>Client Order Items</title>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jqueryy/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
 	<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 	<script type="text/javascript" src="js/accounting.min.js"></script>
 	<style type="text/css">
@@ -35,7 +37,7 @@ session_start();
 		<div class="col-sm-12" style="background-color: #BDBDBD; border-radius: 5px;">
 
 			<div class="col-sm-12">
-				<h4 style="text-align: center">My Shopping Cart</h4>
+				<h4 style="text-align: center" id="top">My Shopping Cart</h4>
 				<h5><a class="btn btn-primary" href="account.php">Continue Shopping</a></h5>
 				<hr>
 			</div>
@@ -174,34 +176,62 @@ session_start();
 			<div class='col-sm-10'>
 			</div>
 			<div class='col-sm-2'>
-				<form method="post" action="">
 				<button id="checkout" disabled class='btn btn-primary'>Checkout</button>
-				</form>
-			</div>
+			</form>
 		</div>
-		<div class='col-sm-12'><br></div>
 	</div>
-	<?php  
+	<div class='col-sm-12'><br></div>
+</div>
+<?php  
 
-	if(isset($_POST['remove'])){
-		$id = $_POST['ids'];
+if(isset($_POST['remove'])){
+	$id = $_POST['ids'];
 
-		$sql = "DELETE FROM clientitem where id = $id";
+	$sql = "DELETE FROM clientitem where id = $id";
 
-		if($con->query($sql)){
-			echo "<script>alert('Item Removed Success');window.location.href='cart.php'</script>";
+	if($con->query($sql)){
+		echo "<script>alert('Item Removed Success');window.location.href='cart.php'</script>";
 
-		}
-		else{
-			echo "<script>alert('Item Removed Failed')</script>";
-		}
 	}
+	else{
+		echo "<script>alert('Item Removed Failed')</script>";
+	}
+}
 
-	?>
-	<script type="text/javascript">
-		$(document).ready(function(){
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
 
-			$("#tc").click(function(){
+		var isDone = 0;
+
+
+		$("#checkout").click(function(){
+
+			$.ajax({
+				url: "php_checkout.php",
+				type: "post",
+				data:{
+					"request": 1
+				},
+				success:function(data){
+					document.documentElement.scrollTop = 0;
+					isDone = 1;
+
+					if(isDone == 1){
+						$.bootstrapGrowl("Checkout complete you can check your reference number now cart refresh in 3 seconds",{
+							type: "success",
+							delay: 2000,
+						});
+						isDone = 0;
+						setTimeout(function(){
+							window.location.href= 'cart.php';
+						},3000)
+					}
+				}
+			});
+
+		});
+		$("#tc").click(function(){
 				//console.log("Checked");
 				if(this.checked == true){
 					console.log("Checked");
@@ -212,19 +242,9 @@ session_start();
 					$("#checkout").attr("disabled",true);
 				}
 			});
-		});
-	</script>
-	<?php  
+	});
+</script>
 
-	include "Connection.php";
-
-	$sql = "DELETE FROM clientitem where cid = $_SESSION[cid]";
-
-	if($con->query($sql)){
-		echo "<script>alert('Product checkout complete!')</script>";
-	}
-
-	?>
 </div>
 </body>
 </html>
