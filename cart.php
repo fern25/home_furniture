@@ -174,7 +174,9 @@ session_start();
 			<div class='col-sm-10'>
 			</div>
 			<div class='col-sm-2'>
+				<form method="post" action="">
 				<button id="checkout" disabled class='btn btn-primary'>Checkout</button>
+				</form>
 			</div>
 		</div>
 		<div class='col-sm-12'><br></div>
@@ -212,6 +214,17 @@ session_start();
 			});
 		});
 	</script>
+	<?php  
+
+	include "Connection.php";
+
+	$sql = "DELETE FROM clientitem where cid = $_SESSION[cid]";
+
+	if($con->query($sql)){
+		echo "<script>alert('Product checkout complete!')</script>";
+	}
+
+	?>
 </div>
 </body>
 </html>
