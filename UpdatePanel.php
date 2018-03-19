@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['auser'])){
     header("location:LoginAdmin.php?msg=blocklogin!");
 }
 
@@ -16,7 +16,7 @@ if(!isset($_SESSION['user'])){
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="adminpanel.css"> -->
 </head>
-<body style="background: url('bg.png');background-repeat: no-repeat;background-size: cover;">
+<body style="background: #555;">
     <div class="container">
         <div class="col-sm-12"></div>
         <div class="navbar navbar-inverse">

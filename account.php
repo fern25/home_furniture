@@ -113,7 +113,7 @@ else{
 				<a href='product_view.php?id=$row[id]'>
 				<div class='panel panel-default'>
 				<div class='panel-heading'>
-				<img class='img-responsive' style='height:190px; width: 190px;' src='img/$row[img]'>
+				<img class='img-rounded' style='height:190px; width: 190px;' src='img/$row[img]'>
 				<br><br>
 
 				<label>$row[pname]</label>
